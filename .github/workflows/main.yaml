@@ -3,11 +3,16 @@ on:
   release:
     types: [published]
     tag:
-    - final
+    - v0.1
 jobs:
   build_and_upload:
     runs-on: ubuntu-latest
     steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: '${{github.event.release.tag_name}}'
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -25,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: njr/sa54_randnum:final
+          tags: njriss54/randomnumber:${{github.event.release.tag_name}}
       - 
         name: Send custom JSON data to Slack workflow
         id: slack
@@ -39,7 +44,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Name: Ng Jian Rui, Eugene\nMatriculation: A249500L\nEmail: e0941693@u.nus.edu\nRepo: git://github.com:eugjj/SA54_randnum.git \nImage name: eugjj/sa54_randnum:final \nImage URL: https://hub.docker.com/repository/docker/eugjj/sa54_randnum"
+                    "text": "Name: Ng Jian Rui\nMatriculation: A249500L\nEmail: e0941693@u.nus.edu\nRepo: git://github.com:JavstRanger/randnum.git \nImage name: njriss54/randomnumber:${{github.event.release.tag_name}} \nImage URL: https://hub.docker.com/repository/docker/njriss54/randomnumber"
                   }
                 }
               ]
