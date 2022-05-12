@@ -3,7 +3,7 @@ on:
   release:
     types: [published]
     tag:
-    - v2.02
+    - v3
 jobs:
   build_and_upload:
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Name: Ng Jian Rui\nMatriculation: A0249500L\nEmail: e0941693@u.nus.edu\nRepo: git://github.com:JavstRanger/randnum.git \nImage name: njriss54/randomnumber:${{github.event.release.tag_name}} \nImage URL: https://hub.docker.com/repository/docker/njriss54/randomnumber"
+                    "text": "Name: Ng Jian Rui\nMatriculation: A0249500L\nEmail: e0941693@u.nus.edu\nRepo: git://github.com/JavstRanger/randnum.git \nImage name: njriss54/randomnumber:${{github.event.release.tag_name}} \nImage URL: https://hub.docker.com/repository/docker/njriss54/randomnumber"
                   }
                 }
               ]
