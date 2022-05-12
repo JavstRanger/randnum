@@ -3,7 +3,7 @@ on:
   release:
     types: [published]
     tag:
-    - v2.1
+    - v2.01
 jobs:
   build_and_upload:
     runs-on: ubuntu-latest
